@@ -27,6 +27,8 @@ stable"
 apt-get update
 apt-get install -y docker-ce=17.06.0~ce-0~ubuntu
 
+chmod +x *.sh */*.sh infiniswap_bd/nbdxadm/*
+
 #vim /etc/network/interfaces
 
 

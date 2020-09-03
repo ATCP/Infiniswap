@@ -28,3 +28,9 @@ stable"
 
 apt-get update
 apt-get install -y docker-ce=17.06.0~ce-0~ubuntu
+
+# auto ib0
+# iface ib0 inet static
+# address 172.16.0.104
+# netmask 255.255.255.0
+# broadcast 172.16.0.255

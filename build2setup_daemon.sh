@@ -10,4 +10,4 @@ cd /root/Infiniswap/setup
 
 cd /root/Infiniswap/infiniswap_daemon
 
-./infiniswap-daemon 10.10.1.2 9400
+./infiniswap-daemon 172.16.0.105 9400

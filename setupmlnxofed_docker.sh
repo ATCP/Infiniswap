@@ -6,8 +6,6 @@ tar xvf MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64.tgz
 cd MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64
 ./mlnxofedinstall --force
 
-# avoid host  lockup
-echo 1 > /proc/sys/kernel/softlockup_panic
 
 # install docker
 apt-get install -y \
@@ -28,6 +26,12 @@ stable"
 
 apt-get update
 apt-get install -y docker-ce=17.06.0~ce-0~ubuntu
+
+#vim /etc/network/interfaces
+
+
+# avoid host  lockup
+echo 1 > /proc/sys/kernel/softlockup_panic
 
 # auto ib0
 # iface ib0 inet static

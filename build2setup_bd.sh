@@ -18,7 +18,7 @@ modprobe ib_ipoib
 
 mkdir /mydata && /usr/local/etc/emulab/mkextrafs.pl /mydata
 
-umount /dev/nvme0n1p4 && swapoff /dev/nvme0n1p3
+umount /dev/sda4 && swapoff /dev/sda3
 
 cd /root/Infiniswap/setup
 

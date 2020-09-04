@@ -1,13 +1,10 @@
 #!/bin/bash
 set -x
 
-apt-get install software-properties-common
-add-apt-repository ppa:ubuntu-toolchain-r/test
-apt-get update
-apt-get install gcc-8 g++-8
+apt-get install software-properties-common && add-apt-repository ppa:ubuntu-toolchain-r/test
+apt-get update && apt-get install -y gcc-8 g++-8
 
-cd /usr/bin
-rm gcc g++
+cd /usr/bin && rm gcc g++
 ln -sf gcc-8 gcc
 ln -sf g++-8 g++
 
@@ -33,7 +30,7 @@ umount /dev/sda4 && swapoff /dev/sda3
 
 cd /root/Infiniswap/setup
 
-chmod +x *.sh &&  ./get_module.symvers.sh 3.3
+chmod +x *.sh &&  ./get_module.symvers.sh 4.1
 
 ./install.sh bd
 

@@ -31,8 +31,8 @@ stable"
 #apt-cache madison docker-ce
 
 apt-get update
-apt-get install -y docker-ce=17.06.0~ce-0~ubuntu
-
+#apt-get install -y docker-ce=17.06.0~ce-0~ubuntu
+apt-get install -y docker-ce=18.06.3~ce~3-0~ubuntu
 cd /root/Infiniswap
 
 chmod +x *.sh */*.sh infiniswap_bd/nbdxadm/*

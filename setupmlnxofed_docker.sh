@@ -7,7 +7,9 @@ cd /root
 wget http://content.mellanox.com/ofed/MLNX_OFED-4.1-1.0.2.0/MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu14.04-x86_64.tgz
 
 tar xvf MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu14.04-x86_64.tgz
+
 cd MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu14.04-x86_64
+
 ./mlnxofedinstall --force  --without-fw-update
 
 
@@ -31,7 +33,7 @@ stable"
 apt-get update
 apt-get install -y docker-ce=17.06.0~ce-0~ubuntu
 
-cd /root/infiniswap
+cd /root/Infiniswap
 
 chmod +x *.sh */*.sh infiniswap_bd/nbdxadm/*
 

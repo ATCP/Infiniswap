@@ -132,11 +132,15 @@ void stackbd_make_request5(struct bio *bio)
         printk("stackbd: Device not active yet, aborting\n");
         goto abort;
     }
+
+	pr_info("lt:tag %d \n", 0);
     bio->bi_end_io = (bio_end_io_t*)IS_stackbd_end_io3;
+	pr_info("lt:tag %d, %p \n", 1, stackbd.bio_list);
     bio_list_add(&stackbd.bio_list, bio);
 
     wake_up(&req_event);
     spin_unlock_irq(&stackbd.lock);
+	pr_info("lt:tag %d\n", 5);
     return;
 abort:
     spin_unlock_irq(&stackbd.lock);

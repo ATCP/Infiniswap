@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-apt-get install software-properties-common && add-apt-repository ppa:ubuntu-toolchain-r/test
+apt-get install -y software-properties-common && add-apt-repository ppa:ubuntu-toolchain-r/test
 apt-get update && apt-get install -y gcc-8 g++-8
 
 cd /usr/bin && rm gcc g++

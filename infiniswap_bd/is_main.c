@@ -190,26 +190,26 @@ void stackbd_bio_generate(struct rdma_ctx *ctx, struct request *req)
 	unsigned int nr_segs = req->nr_phys_segments;
 	unsigned int io_size = nr_segs * IS_PAGE_SIZE;
 
-	pr_info("lt:tag p- %d \n", 2);
+	// pr_info("lt:tag p- %d \n", 2);
 	cloned_bio = bio_clone(req->bio, GFP_ATOMIC); 
-	pr_info("lt:tag p- %d \n", 3);
+	// pr_info("lt:tag p- %d \n", 3);
 	pg = virt_to_page(ctx->rdma_buf);
-	pr_info("lt:tag p- %d \n", 4);
+	// pr_info("lt:tag p- %d \n", 4);
 	cloned_bio->bi_io_vec->bv_page  = pg; 
 	cloned_bio->bi_io_vec->bv_len = io_size;
 	cloned_bio->bi_io_vec->bv_offset = 0;
-	pr_info("lt:tag p- %d \n", 5);
+	// pr_info("lt:tag p- %d \n", 5);
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0)
 	cloned_bio->bi_iter.bi_size = io_size;
 #else
 	cloned_bio->bi_size = io_size;
 #endif
 
-	pr_info("lt:tag p- %d \n", 6);
+	// pr_info("lt:tag p- %d \n", 6);
 	cloned_bio->bi_private = uint64_from_ptr(ctx);
-	pr_info("lt:tag p- %d \n", 7);
+	// pr_info("lt:tag p- %d \n", 7);
 	stackbd_make_request5(cloned_bio);
-	pr_info("lt:tag p- %d \n", 8);
+	// pr_info("lt:tag p- %d \n", 8);
 }
 
 void mem_gather(char *rdma_buf, struct request *req)

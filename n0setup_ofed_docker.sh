@@ -39,13 +39,15 @@ chmod +x *.sh */*.sh infiniswap_bd/nbdxadm/*
 
 
 # avoid host  lockup
-echo 1 > /proc/sys/kernel/softlockup_panic
+# echo 1 > /proc/sys/kernel/softlockup_panic
 
 
 #vim /etc/network/interfaces
 
-# auto ib0
-# iface ib0 inet static
-# address 172.16.0.104
-# netmask 255.255.255.0
-# broadcast 172.16.0.255
+echo 1 > /proc/sys/kernel/softlockup_panic
+
+echo "auto ib0
+iface ib0 inet static
+address 172.16.0.104
+netmask 255.255.255.0
+broadcast 172.16.0.255 " >> /etc/network/interfaces

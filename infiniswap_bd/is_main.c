@@ -183,8 +183,8 @@ int IS_rdma_read(struct IS_connection *IS_conn, struct kernel_cb *cb, int cb_ind
 
 void stackbd_bio_generate(struct rdma_ctx *ctx, struct request *req)
 {
-	
-	pr_info("lt:tag p- %d, %p \n", 1, req);
+	if(req == NULL)
+	 pr_info("lt:tag p- %d, %p \n", 1, req);
 	struct bio *cloned_bio = NULL;
 	struct page *pg = NULL;
 	unsigned int nr_segs = req->nr_phys_segments;

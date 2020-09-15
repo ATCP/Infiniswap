@@ -2,7 +2,7 @@
 set -x
 
 apt-get update
-apt-get -y install ant build-essential ant-optional openjdk-8- jdk python cmake valgrind ntp ccache git git-email python-httplib2 python-setuptools python-dev 
+apt-get -y install ant build-essential ant-optional openjdk-8-jdk python cmake valgrind ntp ccache git git-email python-httplib2 python-setuptools python-dev 
 #apt-show-versions 
 #apt-show-versions 出错 
 #rm /etc/apt/apt.conf.d/docker-gzip-indexes && apt-get purge -y apt-show- versions 

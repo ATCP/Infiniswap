@@ -2,7 +2,7 @@
 set -x
 
 
-echo 1 > /proc/sys/kernel/softlockup_panic
+echo "1" > /proc/sys/kernel/softlockup_panic
 
 apt-get install software-properties-common && add-apt-repository ppa:ubuntu-toolchain-r/test
 apt-get update && apt-get install -y gcc-8 g++-8

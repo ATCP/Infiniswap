@@ -2,6 +2,10 @@
 set -x
 
 apt-get update
+apt-get install -y software-properties-common
+add-apt-repository ppa:openjdk-r/ppa
+
+apt-get update
 apt-get -y install ant build-essential ant-optional openjdk-8-jdk python cmake valgrind ntp ccache git git-email python-httplib2 python-setuptools python-dev 
 #apt-show-versions 
 #apt-show-versions 出错 

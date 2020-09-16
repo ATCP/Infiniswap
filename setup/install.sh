@@ -12,7 +12,7 @@ have_lookup_bdev_patch=0
 
 #max page number in a single struct request (swap IO request),
 #(MAX_SGL_LEN), default is 1 (<4.4.0), 32 (>=4.4.0)
-max_page_num=32
+max_page_num=1
 
 #max page number in a single bio request 
 #(BIO_PAGE_CAP), default is 32

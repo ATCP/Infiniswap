@@ -25,7 +25,7 @@ modprobe ib_ipoib
 # echo 1 > portal.list
 # echo 10.10.1.2:9400 >> portal.list
 
-// fe80::1658:d0ff:fe58:4fb2
+# // fe80::1658:d0ff:fe58:4fb2
 
 mkdir /mydata && /usr/local/etc/emulab/mkextrafs.pl /mydata
 

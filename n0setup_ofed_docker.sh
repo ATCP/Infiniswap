@@ -1,15 +1,15 @@
 #!/bin/bash
 set -x
 
-cd /root
-wget https://www.mellanox.com/downloads/ofed/MLNX_OFED-3.3-1.0.4.0/MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64.tgz
-tar xvf MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64.tgz 
-cd MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64
-# wget http://content.mellanox.com/ofed/MLNX_OFED-4.1-1.0.2.0/MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu14.04-x86_64.tgz
+cd ~
+#wget https://www.mellanox.com/downloads/ofed/MLNX_OFED-3.3-1.0.4.0/MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64.tgz
+#tar xvf MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64.tgz 
+#cd MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64
+wget http://content.mellanox.com/ofed/MLNX_OFED-4.1-1.0.2.0/MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu16.04-x86_64.tgz
 
-# tar xvf MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu14.04-x86_64.tgz
+tar xvf MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu16.04-x86_64.tgz
 
-# cd MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu14.04-x86_64
+cd MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu16.04-x86_64
 
 ./mlnxofedinstall --force  --without-fw-update
 
@@ -34,7 +34,7 @@ cd MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64
 # apt-get update
 # apt-get install -y docker-ce=17.06.0~ce-0~ubuntu
 # apt-get install -y docker-ce=18.06.3~ce~3-0~ubuntu
-cd /root/Infiniswap
+cd ~/Infiniswap
 
 chmod +x *.sh */*.sh infiniswap_bd/nbdxadm/*
 

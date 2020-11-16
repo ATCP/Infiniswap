@@ -8,7 +8,7 @@ fi
 # block device options
 #have the kernel patch for lookup_bdev()
 #(HAVE_LOOKUP_BDEV_PATCH), default is undefined
-have_lookup_bdev_patch=0
+have_lookup_bdev_patch=1
 
 #max page number in a single struct request (swap IO request),
 #(MAX_SGL_LEN), default is 1 (<4.4.0), 32 (>=4.4.0)
@@ -32,7 +32,7 @@ stackbd_name="stackbd"
 
 #name of physical backup disk
 #(BACKUP_DISK), default is "/dev/sda4"
-backup_disk="/dev/sda4"
+backup_disk="/dev/sda5"
 # backup_disk="/dev/nvme0n1p4"
 #number of queried server in looking for remote memory
 #(SERVER_SELECT_NUM), default is 1

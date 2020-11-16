@@ -30,11 +30,11 @@ modprobe ib_ipoib
 
 # // fe80::1658:d0ff:fe58:4fb2
 
-mkdir /mydata && /usr/local/etc/emulab/mkextrafs.pl /mydata
+#mkdir /mydata && /usr/local/etc/emulab/mkextrafs.pl /mydata
 
-umount /dev/sda4 && swapoff /dev/sda3
+umount /dev/sda5 && swapoff /dev/sda5
 
-cd /root/Infiniswap/setup
+cd ~/Infiniswap/setup
 
 chmod +x *.sh &&  ./get_module.symvers.sh 4.1
 

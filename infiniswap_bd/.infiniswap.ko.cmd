@@ -1,0 +1,1 @@
+cmd_/home/liuke/Infiniswap/infiniswap_bd/infiniswap.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/liuke/Infiniswap/infiniswap_bd/infiniswap.ko /home/liuke/Infiniswap/infiniswap_bd/infiniswap.o /home/liuke/Infiniswap/infiniswap_bd/infiniswap.mod.o ;  true

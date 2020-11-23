@@ -177,7 +177,9 @@ int IS_rdma_read(struct IS_connection *IS_conn, struct kernel_cb *cb, int cb_ind
 	if (ret) {
 		printk(KERN_ALERT PFX "client post read %d, wr=%p\n", ret, &ctx->rdma_sq_wr);
 		return ret;
-	}	
+	} else {
+            
+        }                       
 	return 0;
 }
 

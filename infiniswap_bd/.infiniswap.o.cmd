@@ -1,1 +1,0 @@
-cmd_/home/liuke/Infiniswap/infiniswap_bd/infiniswap.o := ld -m elf_x86_64   -r -o /home/liuke/Infiniswap/infiniswap_bd/infiniswap.o /home/liuke/Infiniswap/infiniswap_bd/is_configfs.o /home/liuke/Infiniswap/infiniswap_bd/is_mq.o /home/liuke/Infiniswap/infiniswap_bd/is_main.o 

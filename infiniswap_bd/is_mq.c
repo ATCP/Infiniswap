@@ -221,8 +221,8 @@ void stackbd_make_request2(struct request_queue *q, struct request *req)
 {
     struct bio *bio = NULL;
     struct bio *b = req->bio;
-    int i;
-    int len = req->nr_phys_segments;
+    //int i;
+    //int len = req->nr_phys_segments;
 
     spin_lock_irq(&stackbd.lock);
     if (!stackbd.bdev_raw)
@@ -235,15 +235,23 @@ void stackbd_make_request2(struct request_queue *q, struct request *req)
         printk("stackbd: Device not active yet, aborting\n");
         goto abort;
     }
-    for (i=0; i<len -1; i++){
-    	bio = bio_clone(b, GFP_ATOMIC);
-    	bio_list_add(&stackbd.bio_list, bio);
-    	b = b->bi_next;
-	}
-    bio = bio_clone(b, GFP_ATOMIC);
-	bio->bi_end_io = (bio_end_io_t*)IS_stackbd_end_io;
-	bio->bi_private = (void*) uint64_from_ptr(req);
-    bio_list_add(&stackbd.bio_list, bio);
+    
+    //for (i=0; i<len -1; i++){
+    //	bio = bio_clone(b, GFP_ATOMIC);
+    //	bio_list_add(&stackbd.bio_list, bio);
+    //	b = b->bi_next;
+    //}
+    //bio = bio_clone(b, GFP_ATOMIC);
+    //    bio->bi_end_io = (bio_end_io_t*)IS_stackbd_end_io;
+    //    bio->bi_private = (void*) uint64_from_ptr(req);
+    //bio_list_add(&stackbd.bio_list, bio);
+    
+    for (; b; b = b->bi_next) {
+      bio = bio_clone(b, GFP_ATOMIC);
+      bio->bi_end_io = (bio_end_io_t*)IS_stackbd_end_io;
+      bio->bi_private = (void*) uint64_from_ptr(req);
+      bio_list_add(&stackbd.bio_list, bio);
+    }
 
     wake_up(&req_event);
     spin_unlock_irq(&stackbd.lock);

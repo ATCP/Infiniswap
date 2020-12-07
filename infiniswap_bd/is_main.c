@@ -174,7 +174,7 @@ int IS_rdma_read(struct IS_connection *IS_conn, struct kernel_cb *cb, int cb_ind
 	#endif	
 	ret = ib_post_send(cb->qp, (struct ib_send_wr *) &ctx->rdma_sq_wr, &bad_wr);
 
-	if (ret) {
+	if (!ret) {
 		printk(KERN_ALERT PFX "client post read %d, wr=%p\n", ret, &ctx->rdma_sq_wr);
 		return ret;
 	} else {
@@ -237,7 +237,7 @@ int IS_rdma_write(struct IS_connection *IS_conn, struct kernel_cb *cb, int cb_in
 	struct ib_send_wr *bad_wr;	
 	struct rdma_ctx *ctx;
 	int ctx_loop = 0;
-
+           
 	// get ctx_buf based on request address
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 0)
 	int conn_id = (uint64_t)(bio_data(req->bio)) & QUEUE_NUM_MASK;
@@ -287,7 +287,7 @@ int IS_rdma_write(struct IS_connection *IS_conn, struct kernel_cb *cb, int cb_in
 	ctx->rdma_sq_wr.opcode = IB_WR_RDMA_WRITE;
 #endif
 	ret = ib_post_send(cb->qp, (struct ib_send_wr *) &ctx->rdma_sq_wr, &bad_wr);
-	if (ret) {
+	if (!ret) {
 		printk(KERN_ALERT PFX "client post write %d, wr=%p\n", ret, &ctx->rdma_sq_wr);
 		return ret;
 	}
@@ -787,7 +787,10 @@ static int client_recv(struct kernel_cb *cb, struct ib_wc *wc)
 		printk(KERN_ERR PFX "cb is not connected\n");	
 		return -1;
 	}
-	switch(cb->recv_buf.type){
+	
+        printk("msg type %d size %d\n", cb->recv_buf.type, cb->recv_buf.size_gb); 
+        
+        switch(cb->recv_buf.type){
 		case FREE_SIZE:
 			cb->remote_chunk.target_size_g = cb->recv_buf.size_gb;
 			cb->state = FREE_MEM_RECV;	
@@ -811,7 +814,7 @@ static int client_recv(struct kernel_cb *cb, struct ib_wc *wc)
 			client_recv_stop(cb);
 			break;
 		default:
-			pr_info(PFX "client receives unknown msg\n");
+                        pr_info(PFX "client receives unknown msg\n");
 			return -1; 	
 	}
 	return 0;
@@ -1075,7 +1078,7 @@ static int IS_create_qp(struct kernel_cb *cb)
 {
 	struct ib_qp_init_attr init_attr;
 	int ret;
-
+  
 	memset(&init_attr, 0, sizeof(init_attr));
 	init_attr.cap.max_send_wr = cb->txdepth; /*FIXME: You may need to tune the maximum work request */
 	init_attr.cap.max_recv_wr = cb->txdepth;  
@@ -1144,14 +1147,18 @@ static int IS_setup_qp(struct kernel_cb *cb, struct rdma_cm_id *cm_id)
 		printk(KERN_ERR PFX "ib_create_cq failed\n");
 		goto err2;
 	}
-
+        
+        pr_info("created qp %p\n", cb->qp);
+	
 	ret = IS_create_qp(cb);
 	if (ret) {
 		printk(KERN_ERR PFX "IS_create_qp failed: %d\n", ret);
 		goto err2;
 	}
-	pr_info("created qp %p\n", cb->qp);
-	return 0;
+	
+        pr_info("created qp %p\n", cb->qp);
+	
+        return 0;
 err2:
 	ib_destroy_cq(cb->cq);
 err1:
@@ -1550,7 +1557,7 @@ static int kernel_cb_init(struct kernel_cb *cb, struct IS_session *IS_session)
 	cb->txdepth = IS_QUEUE_DEPTH * submit_queues + 1;
 	cb->size = IS_PAGE_SIZE * MAX_SGL_LEN; 
 	cb->state = IDLE;
-
+        
 	cb->remote_chunk.chunk_size_g = 0;
 	cb->remote_chunk.chunk_list = (struct remote_chunk_g **)kzalloc(sizeof(struct remote_chunk_g *) * MAX_MR_SIZE_GB, GFP_KERNEL);
 	cb->remote_chunk.remote_mapped = (atomic_t *)kmalloc(sizeof(atomic_t) * MAX_MR_SIZE_GB, GFP_KERNEL);

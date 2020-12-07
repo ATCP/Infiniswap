@@ -5,13 +5,13 @@ cd ~
 #wget https://www.mellanox.com/downloads/ofed/MLNX_OFED-3.3-1.0.4.0/MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64.tgz
 #tar xvf MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64.tgz 
 #cd MLNX_OFED_LINUX-3.3-1.0.4.0-ubuntu14.04-x86_64
-wget http://content.mellanox.com/ofed/MLNX_OFED-4.1-1.0.2.0/MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu16.04-x86_64.tgz
+#wget http://content.mellanox.com/ofed/MLNX_OFED-4.1-1.0.2.0/MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu16.04-x86_64.tgz
 
 tar xvf MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu16.04-x86_64.tgz
 
 cd MLNX_OFED_LINUX-4.1-1.0.2.0-ubuntu16.04-x86_64
 
-./mlnxofedinstall --force  --without-fw-update
+./mlnxofedinstall --force-dkms --force --without-fw-update
 
 
 # install docker

@@ -190,7 +190,7 @@ struct raio_io_u {
 #define SUPPORTED_PORTALS   5
 #define IS_SECT_SIZE	    512
 #define IS_SECT_SHIFT	    ilog2(IS_SECT_SIZE)
-#define IS_QUEUE_DEPTH    256
+#define IS_QUEUE_DEPTH    128
 #define QUEUE_NUM_MASK	0x001f	//used in addr->(mapping)-> rdma_queue in IS_main.c
 
 //backup disk / swap space  size (GB)
